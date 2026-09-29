@@ -16,3 +16,20 @@
 | Usar diretamente a divisão `Train` e `Test` existente no ZIP. | Não | Foram encontradas imagens muito semelhantes nos dois conjuntos e imagens semelhantes com rótulos conflitantes. | Comparação automática de pares, seguida de inspeção visual; os resultados estão documentados no `AI_LOG.md`. |
 | Criar uma nova divisão estratificada 70/15/15 e guardá-la em `divisao_p1.csv`. | Sim | Foi preciso manter o conjunto de teste fixo e usar a nova divisão em vez das pastas originais. Não foi possível dividir por doente, por falta de identificador. | CSV com 731 imagens de treino, 157 de validação e 157 de teste; zero ficheiros em falta e zero divergências entre rótulo e pasta. |
 | Treinar uma CNN de raiz e uma MobileNetV2 pré-treinada e avaliar os resultados por classe. | Sim | A accuracy global não mostra o baixo desempenho em algumas classes. | Accuracy no teste: 12,74% para a CNN e 33,76% para a MobileNetV2. O relatório por classe mostrou recall zero para `Longitudinal fracture`. |
+
+# PL02
+## 2.1. Caracterização do dataset 
+
+| Classe                | N.º imagens |        % | Dimensão típica | Observações (qualidade, duplicados, marcas) |
+| --------------------- | ----------: | -------: | --------------- | ------------------------------------------- |
+| Avulsion fracture     |         123 |    10,9% |      (640, 640) | Presença de um texto muito tênue no canto superior esquerdo de uma imagem                                            |
+| Fracture Dislocation  |         156 |    13,8% |      (640, 640) | —                                           |
+| Comminuted fracture   |         148 |    13,1% |      (640, 640) | —                                           |
+| Oblique fracture      |          85 |     7,5% |      (640, 640) | —                                           |
+| Impacted fracture     |          84 |     7,4% |      (640, 640) | —                                           |
+| Longitudinal fracture |          80 |     7,1% |      (640, 640) |Presença da marca radiológica “R”, indicando o lado direito. Foi observada uma anotação visível (elipse verde) a destacar uma área específica.                                                                   |
+| Pathological fracture |         134 |    11,9% |      (640, 640) | —                                           |
+| Greenstick fracture   |         122 |    10,8% |      (640, 640) | —                                           |
+| Spiral Fracture       |          86 |     7,6% |      (640, 640) | —                                           |
+| Hairline Fracture     |         111 |     9,8% |      (640, 640) | —                                           |
+| **Total**             |    **1129** | **100%** | —               | —                                           |
