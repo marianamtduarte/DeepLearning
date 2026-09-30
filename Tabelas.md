@@ -15,7 +15,7 @@
 | Carregar as imagens e mostrar nove exemplos com os respetivos rótulos. | Sim | A visualização confirma os rótulos das pastas, mas não garante a sua correção clínica. | Foram mostradas nove imagens rotuladas; o lote tinha shape `(32, 180, 180, 3)` e havia 10 classes. |
 | Usar diretamente a divisão `Train` e `Test` existente no ZIP. | Não | Foram encontradas imagens muito semelhantes nos dois conjuntos e imagens semelhantes com rótulos conflitantes. | Comparação automática de pares, seguida de inspeção visual; os resultados estão documentados no `AI_LOG.md`. |
 | Criar uma nova divisão estratificada 70/15/15 e guardá-la em `divisao_p1.csv`. | Sim | Foi preciso manter o conjunto de teste fixo e usar a nova divisão em vez das pastas originais. Não foi possível dividir por doente, por falta de identificador. | CSV com 731 imagens de treino, 157 de validação e 157 de teste; zero ficheiros em falta e zero divergências entre rótulo e pasta. |
-| Treinar uma CNN de raiz e uma MobileNetV2 pré-treinada e avaliar os resultados por classe. | Sim | A accuracy global não mostra o baixo desempenho em algumas classes. | Accuracy no teste: 12,74% para a CNN e 33,76% para a MobileNetV2. O relatório por classe mostrou recall zero para `Longitudinal fracture`. |
+| Treinar uma CNN de raiz e avaliar os resultados por classe. | Sim | A accuracy global não mostra o baixo desempenho em algumas classes. | Accuracy no teste: 12,74% para a CNN. O relatório por classe mostrou recall zero para `Longitudinal fracture`. |
 
 # PL02
 ## 2.1. Caracterização do dataset 
