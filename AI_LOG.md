@@ -92,14 +92,18 @@ O resumo do modelo apresentou **390 986 parâmetros treináveis** e 10 saídas.
 
 Guardámos o histórico das 30 épocas e o modelo correspondente à menor loss de validação.
 
-| Indicador | Resultado |
-| --- | --- |
-| Época com menor val_loss | 17 |
-| Menor val_loss | 2,1856 |
-| Accuracy de treino nessa época | 21,20% |
-| Accuracy de validação nessa época | 21,02% |
-| Maior accuracy de validação observada | 24,20% |
-| Accuracy na validação do classificador que prevê sempre a classe maioritária do treino | 14,01% |
+| Indicador                                                                              |  Resultado |
+| -------------------------------------------------------------------------------------- | ---------: |
+| Época com menor `val_loss`                                                             |     **19** |
+| Menor `val_loss`                                                                       | **2,1802** |
+| Accuracy de treino nessa época                                                         | **22,85%** |
+| Accuracy de validação nessa época                                                      | **22,29%** |
+| Precisão de validação nessa época                                                      | **66,67%** |
+| Recall de validação nessa época                                                        |  **1,27%** |
+| F1-Score de validação nessa época                                                      | **15,52%** |
+| Maior accuracy de validação observada                                                  | **26,75%** |
+| Accuracy na validação do classificador que prevê sempre a classe maioritária do treino | **14,01%** |
+
 
 A classe maioritária do treino foi *Fracture Dislocation*. Prever sempre essa classe acertaria 22 das 157 imagens de validação.
 
@@ -138,18 +142,23 @@ Treinámos os dois modelos durante 30 épocas, mantendo:
 
 A comparação utilizou a época com menor loss de validação de cada modelo.
 
-| Modelo | Melhor época por val_loss | Loss de validação | Accuracy de treino nessa época | Accuracy de validação nessa época |
-| --- | --- | --- | --- | --- |
-| CNN baseline | 17 | 2,1856 | 21,20% | 21,02% |
-| CNN com Dropout de 0,3 | 25 | 2,1731 | 23,39% | 21,02% |
+| Modelo      | Época de menor `val_loss` | Menor `val_loss` | Accuracy treino nessa época | Accuracy validação nessa época |
+| ----------- | ------------------------: | ---------------: | --------------------------: | -----------------------------: |
+| Baseline    |                    **19** |       **2,1802** |                  **22,85%** |                     **22,29%** |
+| Dropout 0,3 |                    **20** |       **2,1709** |                  **21,07%** |                     **22,93%** |
+
 
 ### Funcionou?
 
 O código executou corretamente.
 
-O Dropout reduziu ligeiramente a menor loss de validação, de 2,1856 para 2,1731, mas a accuracy de validação na época selecionada permaneceu em 21,02%.
+O Dropout reduziu ligeiramente a menor loss de validação, de 2,1802 para 2,1709 e aumentou a accuracy de validação na época selecionada em aproximadamente 0,64 pontos percentuais.
 
-Assim, a hipótese de melhorar a classificação não ficou demonstrada nesta experiência. Uma execução com uma única seed também não permite concluir que a melhoria da loss seja consistente.
+Além disso, na época selecionada, a diferença entre a accuracy de treino e validação passou de 0,56 p.p. no Baseline para 1,86 p.p. no Dropout. As curvas continuam a apresentar oscilações na validação, pelo que a aprendizagem permanece limitada.
+
+A maior accuracy de validação observada foi 26,75% no Baseline e 24,20% no Dropout 0,3.
+
+Esta experiência, realizada com uma única seed, não permite concluir que o Dropout produza uma melhoria consistente.
 
 A accuracy de treino do modelo com Dropout é calculada durante o treino, com Dropout ativo; esse detalhe deve ser considerado ao comparar as métricas de treino entre os modelos.
 
